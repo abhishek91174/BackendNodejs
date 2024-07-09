@@ -1,11 +1,14 @@
    
    const{dbConnect}=require("../src/Db/conn");
-   const port=8000;
+   
+   const app=require("./app");
 
 
 
    dbConnect().then((_) => {
-    // createSuperAdmin();
-    // server.listen(port, (_) => console.log(`Server is Running on port ${port}`));
+    app.listen(process.env.PORT || 7000,()=>{
+        console.log(`server is running on ${process.env.PORT}`);
+
+    })
   });
   
