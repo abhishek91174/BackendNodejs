@@ -6,8 +6,8 @@
 
 
    dbConnect().then((_) => {
-    app.listen(process.env.PORT || 6000,()=>{
-        console.log(`server is running on ${process.env.PORT}`);
+    app.listen( 6000,()=>{
+        console.log(`server is running on 6000 `);
 
     })
   });

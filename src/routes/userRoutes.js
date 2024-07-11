@@ -1,9 +1,12 @@
-const express = require("express");
+// src/routes/userRoutes.js
+const express = require('express');
 const router = express.Router();
-const { registerUser } = require("../controllers/userController");
+const { upload } = require('../middlewares/multer'); // Correct import
+const { registerUser } = require('../controllers/userController');
 
-
-// router.route("/register").post(registerUser);
-router.post("/register",registerUser);
+router.post("/register", upload.fields([
+    { name: 'avtar', maxCount: 1 }, 
+    { name: 'coverImg', maxCount: 1 }
+]), registerUser);
 
 module.exports = router;

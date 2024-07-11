@@ -1,16 +1,15 @@
-const multer=require("multer");
-
+// middlewares/multer.js
+const multer = require('multer');
+const path = require('path');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '../../public/temp'); // Set the destination folder for the uploaded files
+        cb(null, path.resolve(__dirname, '../../public')); // Correctly resolve the destination folder
     },
     filename: function (req, file, cb) {
-      
-      cb(null, file.originalname);
+        cb(null, file.originalname);
     }
-  });
+});
 
-  const upload=multer({storage:storage});
-  module.exports={upload};
-
+const upload = multer({ storage: storage });
+module.exports = { upload };
